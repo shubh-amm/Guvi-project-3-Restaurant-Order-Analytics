@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Order Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-200 p-6">
+    <div class="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl p-8 transform transition-transform hover:scale-[1.005] duration-300">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Restaurant Analytics</span>
+            </h1>
+            <p class="mt-4 text-xl text-gray-600">Dynamic insights into your best-selling dishes and busiest hours.</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 mb-10 p-6 bg-gray-50 rounded-2xl shadow-inner">
+            <div class="w-full md:w-1/3">
+                <label for="dayFilter" class="block text-sm font-semibold text-gray-700 mb-2">
+                    <i class="fas fa-calendar-day text-blue-500 mr-2"></i>
+                    Filter by Day:
+                </label>
+                <select id="dayFilter" class="mt-1 block w-full px-4 py-2 text-base text-gray-800 border-2 border-gray-300 focus:outline-none focus:border-indigo-500 sm:text-lg rounded-xl shadow-md transition-all duration-300 ease-in-out hover:border-blue-500">
+                    <option value="all">All Days</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+            <div class="w-full md:w-1/3">
+                <label for="customerFilter" class="block text-sm font-semibold text-gray-700 mb-2">
+                    <i class="fas fa-users text-blue-500 mr-2"></i>
+                    Filter by Customer Type:
+                </label>
+                <select id="customerFilter" class="mt-1 block w-full px-4 py-2 text-base text-gray-800 border-2 border-gray-300 focus:outline-none focus:border-indigo-500 sm:text-lg rounded-xl shadow-md transition-all duration-300 ease-in-out hover:border-blue-500">
+                    <option value="all">All Customer Types</option>
+                    <option value="Dine-In">Dine-In</option>
+                    <option value="Takeout">Takeout</option>
+                    <option value="Delivery">Delivery</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-utensils text-indigo-500 mr-3"></i>
+                    Most Ordered Dishes
+                </h2>
+                <div class="w-full max-w-sm">
+                    <canvas id="dishesChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-chart-line text-indigo-500 mr-3"></i>
+                    Order Patterns by Meal Time
+                </h2>
+                <div class="w-full">
+                    <canvas id="patternsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
